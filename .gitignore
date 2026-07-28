@@ -1,6 +1,16 @@
 # Maven
 target/
 
+# TestNG Reports
+test-output/
+
+# Extent Reports
+ExtentReport.html
+
+# Logs
+logs/
+*.log
+
 # Eclipse
 .classpath
 .project
@@ -12,16 +22,6 @@ target/
 
 # VS Code
 .vscode/
-
-# Log Files
-*.log
-logs/
-
-# Extent Reports
-ExtentReport.html
-
-# Screenshots (if added later)
-Screenshots/
 
 # OS Files
 .DS_Store
