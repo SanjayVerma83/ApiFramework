@@ -8,19 +8,18 @@ import org.testng.annotations.Test;
 import com.apiframework.base.BaseTest;
 import com.apiframework.config.ConfigManager;
 import com.apiframework.config.EndPoints;
-import com.apiframework.utils.ExcelUtil;
 
 import io.restassured.response.Response;
-
+import com.apiframework.utils.TestDataStore;
 public class GetUserDetailsTest extends BaseTest {
 
     @Test(priority = 1)
     public void getUserDetails() {
 
         // Read Email from Excel
-        String email = ExcelUtil.getCellData("CreateAccount", 1, 1);
+    	String email = TestDataStore.email;
 
-        System.out.println("Email : " + email);
+    	logger.info("Email : {}", email);
 
         // Send GET Request
         Response response = given().spec(requestSpec)

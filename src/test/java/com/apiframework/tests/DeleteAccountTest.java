@@ -9,6 +9,7 @@ import com.apiframework.base.BaseTest;
 import com.apiframework.config.ConfigManager;
 import com.apiframework.config.EndPoints;
 import com.apiframework.utils.ExcelUtil;
+import com.apiframework.utils.TestDataStore;
 
 import io.restassured.response.Response;
 
@@ -17,9 +18,13 @@ public class DeleteAccountTest extends BaseTest {
     @Test(priority = 1)
     public void deleteAccount() {
 
-        // Read Test Data from Excel
-        String email = ExcelUtil.getCellData("CreateAccount", 1, 1);
+        // Get Dynamic Email
+        String email = TestDataStore.email;
+
+        // Password remains same from Excel
         String password = ExcelUtil.getCellData("CreateAccount", 1, 2);
+
+        logger.info("Email : {}", email);
 
         // Send DELETE Request
         Response response = given()
@@ -36,7 +41,6 @@ public class DeleteAccountTest extends BaseTest {
         System.out.println("Content-Type : " + response.getHeader("Content-Type"));
         System.out.println("========================================\n");
 
-        // Print Response Body
         System.out.println(response.asPrettyString());
 
         // HTTP Validations
